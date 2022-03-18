@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: logstash-pod
+  labels:
+    app: logstash-pod
+spec:
+  containers:
+    - image: logstash:6.5.4
+      name: logstash-pod
+      resources:
+        limits:
+          memory: 500Mi
+      imagePullPolicy: IfNotPresent 
+      env:
+        - name: ELASTICSEARCH_HOSTS
+          value: http://elasticsearch:9200
+      ports:
+        - containerPort: 5044
+      volumeMounts:
+        - name: logstash-pipeline
+          mountPath: /usr/share/logstash/pipeline/
+      command:
+        - logstash
+  volumes:
+    - name: logstash-pipeline
+      configMap:
+        name: logstash-configmap
+        items:
+          - key: logstash.conf
+            path: logstash.conf

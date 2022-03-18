@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: movie-app
+spec:
+  replicas: 1
+  selector: 
+    matchLabels: 
+      name: movie-app
+      app: onboarding-app
+  template:
+    metadata:
+      name: movie-app-pod
+      labels: 
+        name: movie-app
+        app: onboarding-app
+    spec:
+      containers:
+        - name: movie-app
+          image: movie-server:latest
+          resources:
+            limits:
+              memory: 300Mi
+              cpu: 500m
+          env:
+            - name: MY_NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            - name: MY_POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: MY_POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8082
+          volumeMounts:
+            - name: log-path
+              mountPath: /var/log/movie
+      volumes:
+        - name: log-path
+          hostPath:
+            path: /var/log/movie

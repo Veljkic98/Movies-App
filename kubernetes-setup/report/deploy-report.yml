@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: report-app
+spec:
+  replicas: 1
+  selector: 
+    matchLabels: 
+      name: report-app
+      app: onboarding-app
+  template:
+    metadata:
+      name: report-app-pod
+      labels: 
+        name: report-app
+        app: onboarding-app
+    spec:
+      containers:
+        - name: report-app
+          image: report-server:latest
+          resources:
+            limits:
+              memory: 300Mi
+              cpu: 500m
+          env:
+            - name: MY_NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            - name: MY_POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: MY_POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8083
+          volumeMounts:
+            - name: log-path
+              mountPath: /var/log/report
+            - name: app
+              mountPath: /app
+      volumes:
+        - name: log-path
+          hostPath:
+            path: /var/log/report
+        - name: app
+          hostPath:
+            path: /app

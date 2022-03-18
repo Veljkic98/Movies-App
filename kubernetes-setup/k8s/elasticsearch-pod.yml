@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: es-pod
+  labels:
+    app: es-pod
+spec:
+  containers:
+    - image: elasticsearch:6.5.4
+      name: es-pod
+      resources:
+        limits:
+          memory: 2Gi
+      imagePullPolicy: IfNotPresent 
+      env:
+        - name: discovery.type
+          value: single-node
+      ports:
+        - containerPort: 9200

@@ -1,0 +1,41 @@
+version: '3'
+services:
+  # DB Auth Image
+  auth-db:
+    image: mysql
+    environment:
+      MYSQL_DATABASE: ${AUTH_MYSQL_DATABASE} 
+      MYSQL_PASSWORD: ${AUTH_MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${AUTH_MYSQL_ROOT_PASSWORD}
+
+  # DB Resource Image
+  resource-db:
+    image: mysql
+    environment:
+      MYSQL_DATABASE: ${RES_MYSQL_DATABASE} 
+      MYSQL_PASSWORD: ${RES_MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${RES_MYSQL_ROOT_PASSWORD}
+
+  # Auth Service Image 
+  auth-server:
+    image: auth-server
+    ports:
+      - 8081:8081
+    build:
+      context: ../auth-server/
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      - auth-db
+
+  # Resource Service Image
+  resource-server:
+    image: resource-server
+    ports:
+      - 8082:8082
+    build:
+      context: ../resource-server/
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      - resource-db

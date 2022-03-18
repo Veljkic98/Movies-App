@@ -1,0 +1,76 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: filebeat-config
+#  namespace: kube-system
+  labels:
+    k8s-app: filebeat
+data:
+  filebeat.yml: |-
+    filebeat.inputs:
+    - type: container
+      paths:
+        - /var/log/containers/*.log
+      fields:
+        log-source: stdout
+      key1: value1
+      processors:
+        - add_kubernetes_metadata:
+            default_indexers.enabled: true
+            default_matchers.enabled: true
+            host: ${NODE_NAME}
+            matchers:
+            - logs_path:
+                logs_path: "/var/log/containers/"
+    - type: log
+      paths:
+        - /var/log/auth/*.log
+        - /var/log/movie/*.log
+        - /var/log/report/*.log
+        - /var/log/audit/*.log
+      fields:
+        log-source: logfile
+      multiline.pattern: '^[0-9]{4}-[0-9]{2}-[0-9]{2}'
+      multiline.negate: true
+      multiline.match: after
+      processors:
+        - add_kubernetes_metadata:
+            default_indexers.enabled: true
+            default_matchers.enabled: true
+            host: ${NODE_NAME}
+            matchers:
+              - logs_path:
+                  logs_path: "/var/log/auth/"
+              - logs_path:
+                  logs_path: "/var/log/movie/"
+              - logs_path:
+                  logs_path: "/var/log/report/"
+              - logs_path:
+                  logs_path: "/var/log/audit/"
+
+    # To enable hints based autodiscover, remove `filebeat.inputs` configuration and uncomment this:
+    #filebeat.autodiscover:
+    #  providers:
+    #    - type: kubernetes
+    #      node: ${NODE_NAME}
+    #      hints.enabled: true
+    #      hints.default_config:
+    #        type: container
+    #        paths:
+    #          - /var/log/containers/*${data.kubernetes.container.id}.log
+
+    processors:
+      - add_cloud_metadata:
+      - add_host_metadata:
+
+    # cloud.id: ${ELASTIC_CLOUD_ID}
+    # cloud.auth: ${ELASTIC_CLOUD_AUTH}
+
+    #output.elasticsearch:
+    #  hosts: ['${ELASTICSEARCH_HOST:elasticsearch}:${ELASTICSEARCH_PORT:9200}']
+    #  username: ${ELASTICSEARCH_USERNAME}
+    #  password: ${ELASTICSEARCH_PASSWORD}
+    output.logstash:
+      hosts: ['logstash:5044']
+    #  username: ${ELASTICSEARCH_USERNAME}
+    #  password: ${ELASTICSEARCH_PASSWORD}

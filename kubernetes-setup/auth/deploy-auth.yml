@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: auth-app
+spec:
+  replicas: 1
+  selector: 
+    matchLabels: 
+      name: auth-app
+      app: onboarding-app
+  template:
+    metadata:
+      name: auth-app-pod
+      labels: 
+        name: auth-app
+        app: onboarding-app
+    spec:
+      containers:
+        - name: auth-app
+          image: auth-server:latest
+          resources:
+            limits:
+              memory: 300Mi
+              cpu: 500m  # 500m = 1cpu
+          # ovo dodato za elk
+          env:
+            - name: MY_NODE_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: spec.nodeName
+            - name: MY_POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: MY_POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8081
+          volumeMounts:
+            - name: log-path
+              mountPath: /var/log/auth
+      volumes:
+        - name: log-path
+          hostPath:
+            path: /var/log/auth
