@@ -1,0 +1,928 @@
+{
+	"info": {
+		"_postman_id": "3d22ecdc-f541-49d8-af4d-e9e97f46cbf8",
+		"name": "Onboarding App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth Server",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"user1@gmail.com\",\r\n    \"password\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Ivan\",\r\n    \"lastName\": \"Ivanovic\",\r\n    \"email\": \"user3@gmail.com\",\r\n    \"password\": \"123\",\r\n    \"rePassword\": \"123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movie Server",
+			"item": [
+				{
+					"name": "Movie",
+					"item": [
+						{
+							"name": "Get all movies",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "G1Rp/Qk+sEWDClGPDtiFkpQeEeGxUdA19DbCnmeOjxqziccN+IaWDvg/NWbmhoxa27SZxMTwKPEXQOJhnudZIKTD1iUWXy7+2K3HxJOf+KIsfPyTzTFLiS2E/QYFIdUZL28Qy2T18j/jEGt3Rq/2E4OmLogMuWUyT5BlAzLnxxLzhSM8r5gqgMUN0z4PHTz32jfPDCIOII8Tjwk6PrVrOp9MBR5W6MZqBNU5iMHK8AW4f+TvVozN5pdPaG7CSaLX8uPjeNL18jRiP7XwPiUdrKjAvD7l7RWU52FR3j/J5MBtaHoaIuqOsstND1UQsTeYH1hyQoRn1hoEwvaTkNZw300jJuDEa6PL75F+nGHAOpg6+zhzxmnkE3jFlg39SSvHcNCszHh6RoAHxN8f/Q50zQ2YzpYXQ7MvbFOF7ufHemZ68rzojGYpPvpwwutr3RQoj9lu3U7pnTg7Ig0WUDOT7xszmYCX7zRRrtB5DeqBZZbYJxKKW5adUMekgpX9T0LZMAGiwmt++SgxfovO1sJy8qc55HQSvHmzoe7PS2lkIY/QWSS+jFJMYfoJl3TIU2ZDa1JlYFlQlrPLqbJaJ++TZ+1TZBZn1dOb9Gile63lO9v8oyjQes82IyT105wegCqBVUuG4gCdM/5KAMmUwSOmseaX7W4/Y91C9Q3jLpwIU9c=",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/movie-management/movies",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"movie-management",
+										"movies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get one movie",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyM0BnbWFpbC5jb20iLCJpZCI6MywiaXNzIjoiYXV0aF9zZXJ2ZXIuaW8iLCJpYXQiOjE2MzkzOTk0NjAsImV4cCI6MTY0MDAwNDI2MCwicm9sZSI6IlJPTEVfVVNFUiJ9.5bIg8PUvSYTs_U0AIw3lMIrKHc2EHreQFF9rN6InJU03RcNA-oMIaHuSRy2QT_qgI_-XTSaDgpOa2y9oz_kH9Q",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/movie-management/movies/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"movie-management",
+										"movies",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete one movie",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMkBnbWFpbC5jb20iLCJpZCI6MiwiaXNzIjoiYXV0aF9zZXJ2ZXIuaW8iLCJpYXQiOjE2Mzc4NDU2MTksImV4cCI6MTYzODQ1MDQxOSwicm9sZSI6IlJPTEVfVVNFUiJ9.4sGlfwHS_k9V8GbFCT1k5StTo3eeMO0yaQaHBPaKirmutRSPZW_oljQUUdEECTDyVnHv_1-ch4ZvHk8IYIiMYA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/movie-management/movies/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"movie-management",
+										"movies",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create movie",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMUBnbWFpbC5jb20iLCJpZCI6MSwiaXNzIjoiYXV0aF9zZXJ2ZXIuaW8iLCJpYXQiOjE2Mzc4NDY3MDUsImV4cCI6MTYzODQ1MTUwNSwicm9sZSI6IlJPTEVfQURNSU4ifQ.yvHc21c2ryZZQLhp2XR-vUO8ImsdAWHOZDqfWOppBkyI542fiETq70QAwDjtywmF84RpSt8ZVk77fXFuIcPJYQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Juzni Vetar\",\r\n    \"genre\": \"Action\",\r\n    \"length\": 117,\r\n    \"director\": {\r\n        \"firstName\": \"Andre\",\r\n        \"lastName\": \"Thomson\"\r\n    }, \"actors\": [\r\n        {\r\n            \"firstName\": \"Ivan\",\r\n            \"lastName\": \"Ivanovic\"\r\n        }, {\r\n            \"firstName\": \"Dusan\",\r\n            \"lastName\": \"Dusic\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8082/movie-management/movies",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"movie-management",
+										"movies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update movie",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMUBnbWFpbC5jb20iLCJpZCI6MSwiaXNzIjoiYXV0aF9zZXJ2ZXIuaW8iLCJpYXQiOjE2MzY3MDY5MjcsImV4cCI6MTYzNzMxMTcyNywicm9sZSI6IlJPTEVfQURNSU4ifQ.whk4buPnD1R9cIh7uFbOHc-xrs81QTBbnZ3uCUgYxwlAWOhS4ullnbS2JmwrCId7dK88OLw-r7jL4jSoZ0HoLQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 5,\r\n    \"name\": \"Hitman2\",\r\n    \"genre\": \"Comedy\",\r\n    \"length\": 117,\r\n    \"director\": {\r\n        \"firstName\": \"Andre\",\r\n        \"lastName\": \"Thomson\"\r\n    }, \"actors\": [\r\n        {\r\n            \"firstName\": \"Ivan\",\r\n            \"lastName\": \"Ivanovic\"\r\n        }, {\r\n            \"firstName\": \"Dusan\",\r\n            \"lastName\": \"Dusic\"\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/api/movies",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"api",
+										"movies"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "get some",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMkBnbWFpbC5jb20iLCJpZCI6MiwiaXNzIjoiYXV0aF9zZXJ2ZXIuaW8iLCJpYXQiOjE2Mzc4NDY0MjIsImV4cCI6MTYzODQ1MTIyMiwicm9sZSI6IlJPTEVfVVNFUiJ9.BkBKIGqMLAGm5d0dCQsGY6yf2FvYTRwU5HFfHX_N28dhobE79Ge7_Ni_jf_QfDHj9c8Uif9QKJOvqnKRjvsk-A",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/movie-management",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"movie-management"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Director",
+					"item": [
+						{
+							"name": "Get all directors",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMUBnbWFpbC5jb20iLCJpZCI6MSwiaXNzIjoiYXV0aF9zZXJ2ZXIuaW8iLCJpYXQiOjE2Mzg3ODQzNTYsImV4cCI6MTYzOTM4OTE1Niwicm9sZSI6IlJPTEVfQURNSU4ifQ.1AjlOvn6P8LRC6dDTQKdLrTHuLIXg3bB3IoNc0-9GHYOduZImXZuU6SfwuCeBuKL5VdRdET7SJ7G9qv1GqljCg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/director-management/directors",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"director-management",
+										"directors"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Actor",
+					"item": [
+						{
+							"name": "Get all actors",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMUBnbWFpbC5jb20iLCJpZCI6MSwiaXNzIjoiYXV0aF9zZXJ2ZXIuaW8iLCJpYXQiOjE2Mzg3ODQzNTYsImV4cCI6MTYzOTM4OTE1Niwicm9sZSI6IlJPTEVfQURNSU4ifQ.1AjlOvn6P8LRC6dDTQKdLrTHuLIXg3bB3IoNc0-9GHYOduZImXZuU6SfwuCeBuKL5VdRdET7SJ7G9qv1GqljCg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/actor-management/actors",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"actor-management",
+										"actors"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "ELK",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9200/_cat/indices?v",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"_cat",
+								"indices"
+							],
+							"query": [
+								{
+									"key": "v",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request 2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9200/logstash-2021.12.02-000001/_search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"logstash-2021.12.02-000001",
+								"_search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all from kibana",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9200/logstash-2021.12.02-000001/_search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9200",
+							"path": [
+								"logstash-2021.12.02-000001",
+								"_search"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Report Server",
+			"item": [
+				{
+					"name": "Movies",
+					"item": [
+						{
+							"name": "All movies CSV",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "G1Rp/Qk+sEWDClGPDtiFkpQeEeGxUdA19DbCnmeOjxqziccN+IaWDvg/NWbmhoxa27SZxMTwKPEXQOJhnudZIKTD1iUWXy7+2K3HxJOf+KIsfPyTzTFLiS2E/QYFIdUZL28Qy2T18j/jEGt3Rq/2E4OmLogMuWUyT5BlAzLnxxLzhSM8r5gqgMUN0z4PHTz32jfPDCIOII8Tjwk6PrVrOp9MBR5W6MZqBNU5iMHK8AW4f+TvVozN5pdPaG7CSaLX8uPjeNL18jRiP7XwPiUdrKjAvD7l7RWU52FR3j/J5MBtaHoaIuqOsstND1UQsTeYH1hyQoRn1hoEwvaTkNZw300jJuDEa6PL75F+nGHAOpg6+zhzxmnkE3jFlg39SSvHcNCszHh6RoAHxN8f/Q50zQ2YzpYXQ7MvbFOF7ufHemZ68rzojGYpPvpwwutr3RQoj9lu3U7pnTg7Ig0WUDOT7xszmYCX7zRRrtB5DeqBZZbYJxKKW5adUMekgpX9T0LZMAGiwmt++SgxfovO1sJy8qc55HQSvHmzoe7PS2lkIY/QWSS+jFJMYfoJl3TIU2ZDa1JlYFlQlrPLqbJaJ++TZ+1TZBZn1dOb9Gile63lO9v8oyjQes82IyT105wegCqBVUuG4gCdM/5KAMmUwSOmseaX7W4/Y91C9Q3jLpwIU9c=",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/movie-reporting/download/movies/csv",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"movie-reporting",
+										"download",
+										"movies",
+										"csv"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All movies PDF",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMUBnbWFpbC5jb20iLCJpZCI6MSwiaXNzIjoiYXV0aF9zZXJ2ZXIuaW8iLCJpYXQiOjE2Mzg3ODQzNTYsImV4cCI6MTYzOTM4OTE1Niwicm9sZSI6IlJPTEVfQURNSU4ifQ.1AjlOvn6P8LRC6dDTQKdLrTHuLIXg3bB3IoNc0-9GHYOduZImXZuU6SfwuCeBuKL5VdRdET7SJ7G9qv1GqljCg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/movie-reporting/movies/pdf",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"movie-reporting",
+										"movies",
+										"pdf"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All movies Excel",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "G1Rp/Qk+sEWDClGPDtiFkpQeEeGxUdA19DbCnmeOjxqziccN+IaWDvg/NWbmhoxa27SZxMTwKPEXQOJhnudZIKTD1iUWXy7+2K3HxJOf+KIsfPyTzTFLiS2E/QYFIdUZL28Qy2T18j/jEGt3Rq/2E4OmLogMuWUyT5BlAzLnxxLzhSM8r5gqgMUN0z4PHTz32jfPDCIOII8Tjwk6PrVrOp9MBR5W6MZqBNU5iMHK8AW4f+TvVozN5pdPaG7CSaLX8uPjeNL18jRiP7XwPiUdrKjAvD7l7RWU52FR3j/J5MBtaHoaIuqOsstND1UQsTeYH1hyQoRn1hoEwvaTkNZw300jJuDEa6PL75F+nGHAOpg6+zhzxmnkE3jFlg39SSvHcNCszHh6RoAHxN8f/Q50zQ2YzpYXQ7MvbFOF7ufHemZ68rzojGYpPvpwwutr3RQoj9lu3U7pnTg7Ig0WUDOT7xszmYCX7zRRrtB5DeqBZZbYJxKKW5adUMekgpX9T0LZMAGiwmt++SgxfovO1sJy8qc55HQSvHmzoe7PS2lkIY/QWSS+jFJMYfoJl3TIU2ZDa1JlYFlQlrPLqbJaJ++TZ+1TZBZn1dOb9Gile63lO9v8oyjQes82IyT105wegCqBVUuG4gCdM/5KAMmUwSOmseaX7W4/Y91C9Q3jLpwIU9c=",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/movie-reporting/download/movies/excel",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"movie-reporting",
+										"download",
+										"movies",
+										"excel"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Directors",
+					"item": [
+						{
+							"name": "All directors CSV",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMUBnbWFpbC5jb20iLCJpZCI6MSwiaXNzIjoiYXV0aF9zZXJ2ZXIuaW8iLCJpYXQiOjE2NDAxODAwMjMsImV4cCI6MTY0MDc4NDgyMywicm9sZSI6IlJPTEVfQURNSU4ifQ.yhMQlpM3hgEjR1MguzZfQqfODaIqa2nDU_mzz17f0cxsbuI45IpsfBRJ8MEJpEAaQzpLTO4PhNh6V-94Ns79Qw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/director-reporting/download/directors/csv",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"director-reporting",
+										"download",
+										"directors",
+										"csv"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All directors PDF",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMUBnbWFpbC5jb20iLCJpZCI6MSwiaXNzIjoiYXV0aF9zZXJ2ZXIuaW8iLCJpYXQiOjE2Mzg3ODQzNTYsImV4cCI6MTYzOTM4OTE1Niwicm9sZSI6IlJPTEVfQURNSU4ifQ.1AjlOvn6P8LRC6dDTQKdLrTHuLIXg3bB3IoNc0-9GHYOduZImXZuU6SfwuCeBuKL5VdRdET7SJ7G9qv1GqljCg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/director-reporting/directors/pdf",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"director-reporting",
+										"directors",
+										"pdf"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All directors Excel",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMUBnbWFpbC5jb20iLCJpZCI6MSwiaXNzIjoiYXV0aF9zZXJ2ZXIuaW8iLCJpYXQiOjE2NDAxODAwMjMsImV4cCI6MTY0MDc4NDgyMywicm9sZSI6IlJPTEVfQURNSU4ifQ.yhMQlpM3hgEjR1MguzZfQqfODaIqa2nDU_mzz17f0cxsbuI45IpsfBRJ8MEJpEAaQzpLTO4PhNh6V-94Ns79Qw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/director-reporting/download/directors/excel",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"director-reporting",
+										"download",
+										"directors",
+										"excel"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Actors",
+					"item": [
+						{
+							"name": "All actors CSV",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "mi9fX6sYj3NQ3E2RBNldOA3cGvEUUUIEzb04wT3x7yL//RZa73arYFwSHq2bFO+IgT8ZDL1LUdnQkga7ryL+BlevMu0yNpIIYumld6YvnnnovPG7sUlX+MWNR+OdMoOYoJGfsd0YI9ovxMR6eJ0zn0NcEQ9nqo+hvrLwFjiicK0U/T2XRMDtRwq7TYH45SGGL482R/R5CPvYTQbErVbasYrD9WjRta5p2m4YGnYgJT9keGcbNR1yEVqJ04Hj3yt3szehMktFdwlRmqRuWsVDSRudwRvcCHtrjChDG5M1WkuKQA9Pz/ITIL1AFHUy8EBwysJ2W3NZC6TqMJAKXLTZjyWi/zQXnuPidLFwvHEWsIYXvABJMg5hJeY6DysFA/O5YN3NL/sDf63T83weN3ZqBKMl8bYNcl2/RdD8eZ14NZeV3OBRrbd89wMUnF2zkN6lMlUm1379WgvbOCoaq0VfOwH6uOLoI39Ze51oI5MSEDfvhC+Qx0/oIPEwTM+ZYW7C9lxbbM3X4eHmLTFFxMf7LlzAHhILpvR3Ia4vxK4ug3Lx/Ez0nK4njW36JQ+82BlQHhgmAeONNRl2KW8v6SPP5NMQKYCNbnxuc5Sgx2vyvcCJJk5jnvQsiG3Fx4I3sa2lSZjbuiG/uZqhlZmdgCAZ0E5SEEcB9fqQrw4424QnXgM=",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/actor-reporting/download/actors/csv",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"actor-reporting",
+										"download",
+										"actors",
+										"csv"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All actors by movie ID CSV",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMUBnbWFpbC5jb20iLCJpZCI6MSwiaXNzIjoiYXV0aF9zZXJ2ZXIuaW8iLCJpYXQiOjE2NDAxODAwMjMsImV4cCI6MTY0MDc4NDgyMywicm9sZSI6IlJPTEVfQURNSU4ifQ.yhMQlpM3hgEjR1MguzZfQqfODaIqa2nDU_mzz17f0cxsbuI45IpsfBRJ8MEJpEAaQzpLTO4PhNh6V-94Ns79Qw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/movie-reporting/download/movies/2/actors/csv",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"movie-reporting",
+										"download",
+										"movies",
+										"2",
+										"actors",
+										"csv"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All actors PDF",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "G1Rp/Qk+sEWDClGPDtiFkpQeEeGxUdA19DbCnmeOjxqziccN+IaWDvg/NWbmhoxa27SZxMTwKPEXQOJhnudZIKTD1iUWXy7+2K3HxJOf+KIsfPyTzTFLiS2E/QYFIdUZL28Qy2T18j/jEGt3Rq/2E4OmLogMuWUyT5BlAzLnxxLzhSM8r5gqgMUN0z4PHTz32jfPDCIOII8Tjwk6PrVrOp9MBR5W6MZqBNU5iMHK8AW4f+TvVozN5pdPaG7CSaLX8uPjeNL18jRiP7XwPiUdrKjAvD7l7RWU52FR3j/J5MBtaHoaIuqOsstND1UQsTeYH1hyQoRn1hoEwvaTkNZw300jJuDEa6PL75F+nGHAOpg6+zhzxmnkE3jFlg39SSvHcNCszHh6RoAHxN8f/Q50zQ2YzpYXQ7MvbFOF7ufHemZ68rzojGYpPvpwwutr3RQoj9lu3U7pnTg7Ig0WUDOT7xszmYCX7zRRrtB5DeqBZZbYJxKKW5adUMekgpX9T0LZMAGiwmt++SgxfovO1sJy8qc55HQSvHmzoe7PS2lkIY/QWSS+jFJMYfoJl3TIU2ZDa1JlYFlQlrPLqbJaJ++TZ+1TZBZn1dOb9Gile63lO9v8oyjQes82IyT105wegCqBVUuG4gCdM/5KAMmUwSOmseaX7W4/Y91C9Q3jLpwIU9c=",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/actor-reporting/download/actors/pdf",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"actor-reporting",
+										"download",
+										"actors",
+										"pdf"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All actors by movie ID PDF",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMUBnbWFpbC5jb20iLCJpZCI6MSwiaXNzIjoiYXV0aF9zZXJ2ZXIuaW8iLCJpYXQiOjE2Mzg3ODQzNTYsImV4cCI6MTYzOTM4OTE1Niwicm9sZSI6IlJPTEVfQURNSU4ifQ.1AjlOvn6P8LRC6dDTQKdLrTHuLIXg3bB3IoNc0-9GHYOduZImXZuU6SfwuCeBuKL5VdRdET7SJ7G9qv1GqljCg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/movie-reporting/movies/2/actors/pdf",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"movie-reporting",
+										"movies",
+										"2",
+										"actors",
+										"pdf"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All actors Excel",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMUBnbWFpbC5jb20iLCJpZCI6MSwiaXNzIjoiYXV0aF9zZXJ2ZXIuaW8iLCJpYXQiOjE2NDAxODAwMjMsImV4cCI6MTY0MDc4NDgyMywicm9sZSI6IlJPTEVfQURNSU4ifQ.yhMQlpM3hgEjR1MguzZfQqfODaIqa2nDU_mzz17f0cxsbuI45IpsfBRJ8MEJpEAaQzpLTO4PhNh6V-94Ns79Qw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/actor-reporting/download/actors/excel",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"actor-reporting",
+										"download",
+										"actors",
+										"excel"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "All actors by movie ID Excel",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMUBnbWFpbC5jb20iLCJpZCI6MSwiaXNzIjoiYXV0aF9zZXJ2ZXIuaW8iLCJpYXQiOjE2NDAxODAwMjMsImV4cCI6MTY0MDc4NDgyMywicm9sZSI6IlJPTEVfQURNSU4ifQ.yhMQlpM3hgEjR1MguzZfQqfODaIqa2nDU_mzz17f0cxsbuI45IpsfBRJ8MEJpEAaQzpLTO4PhNh6V-94Ns79Qw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/movie-reporting/download/movies/2/actors/excel",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"movie-reporting",
+										"download",
+										"movies",
+										"2",
+										"actors",
+										"excel"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Audit Server",
+			"item": [
+				{
+					"name": "All events",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "G1Rp/Qk+sEWDClGPDtiFkpQeEeGxUdA19DbCnmeOjxqziccN+IaWDvg/NWbmhoxa27SZxMTwKPEXQOJhnudZIKTD1iUWXy7+2K3HxJOf+KIsfPyTzTFLiS2E/QYFIdUZL28Qy2T18j/jEGt3Rq/2E4OmLogMuWUyT5BlAzLnxxLzhSM8r5gqgMUN0z4PHTz32jfPDCIOII8Tjwk6PrVrOp9MBR5W6MZqBNU5iMHK8AW4f+TvVozN5pdPaG7CSaLX8uPjeNL18jRiP7XwPiUdrKjAvD7l7RWU52FR3j/J5MBtaHoaIuqOsstND1UQsTeYH1hyQoRn1hoEwvaTkNZw300jJuDEa6PL75F+nGHAOpg6+zhzxmnkE3jFlg39SSvHcNCszHh6RoAHxN8f/Q50zQ2YzpYXQ7MvbFOF7ufHemZ68rzojGYpPvpwwutr3RQoj9lu3U7pnTg7Ig0WUDOT7xszmYCX7zRRrtB5DeqBZZbYJxKKW5adUMekgpX9T0LZMAGiwmt++SgxfovO1sJy8qc55HQSvHmzoe7PS2lkIY/QWSS+jFJMYfoJl3TIU2ZDa1JlYFlQlrPLqbJaJ++TZ+1TZBZn1dOb9Gile63lO9v8oyjQes82IyT105wegCqBVUuG4gCdM/5KAMmUwSOmseaX7W4/Y91C9Q3jLpwIU9c=",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/event-management/events",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"event-management",
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All events by user email",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMUBnbWFpbC5jb20iLCJpZCI6MSwiaXNzIjoiYXV0aF9zZXJ2ZXIuaW8iLCJpYXQiOjE2NDAxODAwMjMsImV4cCI6MTY0MDc4NDgyMywicm9sZSI6IlJPTEVfQURNSU4ifQ.yhMQlpM3hgEjR1MguzZfQqfODaIqa2nDU_mzz17f0cxsbuI45IpsfBRJ8MEJpEAaQzpLTO4PhNh6V-94Ns79Qw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/event-management/events/user1@gmail.com",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"event-management",
+								"events",
+								"user1@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All events by stard end date",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMUBnbWFpbC5jb20iLCJpZCI6MSwiaXNzIjoiYXV0aF9zZXJ2ZXIuaW8iLCJpYXQiOjE2NDAzMzcxMjEsImV4cCI6MTY0MDk0MTkyMSwicm9sZSI6IlJPTEVfQURNSU4ifQ.RCf2_9tLksVwiXWh80scNfVq0DQQlXojrTdO_xLZriKQ_oG5BpymTqzD1J_cvlwlSV5ceXobA7tm7RH998zQQg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8084/event-management/events/date/2021-12-27T12:45:34/2021-12-27T12:55:05",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"event-management",
+								"events",
+								"date",
+								"2021-12-27T12:45:34",
+								"2021-12-27T12:55:05"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
