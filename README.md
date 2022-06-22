@@ -12,7 +12,7 @@ There are 5 microservices:
 
 * Maven, Gradle
 * Spring boot
-* ELK stack - Elasticsearch, logstash and kibana
+* ELK stack
 * Kafka
 * Docker
 * Kubernetes
@@ -20,9 +20,9 @@ There are 5 microservices:
 ## Getting started
 
 ### Prerequisites
-* Download Java 11
-* Download Docker
-* Download Kubernetes (if you don't use Docker Desktop, which container Kubernetes)
+* Java 11
+* Docker
+* Kubernetes (if you don't use Docker Desktop, which contains Kubernetes)
 
 ### Installation
 1. Clone the repo
